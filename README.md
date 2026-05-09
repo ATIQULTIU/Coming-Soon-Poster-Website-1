@@ -37,6 +37,7 @@ Designed with a vintage paper poster aesthetic, masking tape effects, and a clea
 project-folder/
 │
 ├── index.html
+├── style.css
 └── README.md
 ```
 
