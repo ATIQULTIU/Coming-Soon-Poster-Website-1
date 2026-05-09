@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon Poster</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-image: url("https://images.unsplash.com/photo-1624792896718-76e9f7885ef3?w=1600");
+      background-size: cover;
+      background-position: center;
+      font-family: "Special Elite", system-ui;
+      overflow-x: hidden;
+    }
+
+    .wall {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main {
+      width: 100%;
+      max-width: 420px;
+      background: #f3f3f3;
+      padding: 42px 36px 80px;
+      position: relative;
+      transform: rotate(-1.5deg);
+      box-shadow:
+        0 25px 60px rgb(0 0 0 / 35%),
+        inset 0 0 0 2px #111;
+    }
+
+    main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 25%, rgb(0 0 0 / 8%), transparent 45%),
+        radial-gradient(circle at 70% 60%, rgb(0 0 0 / 6%), transparent 50%),
+        radial-gradient(circle at 40% 90%, rgb(0 0 0 / 5%), transparent 55%);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgb(0 0 0 / 3%) 0,
+          rgb(0 0 0 / 3%) 1px,
+          transparent 2px,
+          transparent 4px
+        );
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    .tape {
+      position: absolute;
+      width: 140px;
+      height: 34px;
+      background: linear-gradient(
+        115deg,
+        rgb(255 248 200 / 90%) 0%,
+        rgb(230 215 150 / 75%) 45%,
+        rgb(200 180 120 / 65%) 100%
+      );
+      border: 1px solid rgb(0 0 0 / 35%);
+      box-shadow:
+        inset 0 0 10px rgb(0 0 0 / 28%),
+        inset -2px -2px 4px rgb(255 255 255 / 15%),
+        2px 5px 10px rgb(0 0 0 / 25%);
+      filter: contrast(1.05) saturate(0.7) brightness(0.98);
+    }
+
+    .tape::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgb(0 0 0 / 18%), transparent 45%),
+        radial-gradient(circle at 70% 60%, rgb(0 0 0 / 12%), transparent 50%),
+        linear-gradient(
+          90deg,
+          transparent 0%,
+          rgb(0 0 0 / 8%) 50%,
+          transparent 100%
+        );
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+    }
+
+    .tape::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          rgb(0 0 0 / 6%) 0,
+          rgb(0 0 0 / 6%) 1px,
+          transparent 2px,
+          transparent 6px
+        ),
+        radial-gradient(circle at 50% 50%, transparent 60%, rgb(0 0 0 / 10%));
+      opacity: 0.5;
+      mix-blend-mode: multiply;
+    }
+
+    .top-left {
+      top: -12px;
+      left: 18px;
+      transform: rotate(-12deg);
+    }
+
+    .top-right {
+      top: -14px;
+      right: 22px;
+      transform: rotate(10deg);
+    }
+
+    .bottom {
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%) rotate(4deg);
+    }
+
+    span {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #111;
+      padding-bottom: 6px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 8vw, 46px);
+      margin: 10px 0 12px;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .signup {
+      border-top: 2px dashed #111;
+      padding-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #111;
+      font-size: 14px;
+      background: #fff;
+      font-family: inherit;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: tomato;
+    }
+
+    button {
+      padding: 12px;
+      border: 2px solid #111;
+      background: #111;
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: tomato;
+      border-color: tomato;
+    }
+
+    .note {
+      font-size: 11px;
+      opacity: 0.8;
+      border-left: 3px solid #111;
+      padding-left: 10px;
+      margin-top: 18px;
+    }
+
+    .hint {
+      position: absolute;
+      top: 50%;
+      left: -125px;
+      transform: rotate(-90deg) translateY(-50%);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .hint a {
+      text-decoration: none;
+      color: tomato;
+      font-weight: bold;
+    }
+
+    .ripped-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 40%,
+        rgb(0 0 0 / 8%) 100%
+      );
+      clip-path: polygon(
+        0 0,
+        8% 10%,
+        18% 0,
+        30% 12%,
+        45% 0,
+        60% 14%,
+        75% 2%,
+        90% 15%,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+      pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 36px 24px 70px;
+        transform: rotate(0deg);
+      }
+
+      .hint {
+        position: static;
+        transform: none;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .tape {
+        width: 110px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wall">
+    <main>
+
+      <div class="tape top-left"></div>
+      <div class="tape top-right"></div>
+      <div class="tape bottom"></div>
+
+      <span>Coming Summer 2026</span>
+
+      <h1>The Thing You Want</h1>
+
+      <p>
+        That thing you want to buy? We have it. And it's almost here.
+      </p>
+
+      <form class="signup">
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          required
+        />
+
+        <button type="submit">Notify Me</button>
+      </form>
+
+      <p class="note">
+        Sign up to get notified when we launch.
+      </p>
+
+      <div class="hint">
+        Designed & Developed by
+        <a href="mailto:atik.cmttiu1001@gmail.com">
+          MD. Atiqul Islam (Atik)
+        </a>
+      </div>
+
+      <div class="ripped-bottom"></div>
+
+    </main>
+  </div>
+</body>
+</html>
